@@ -4,20 +4,20 @@ var salaryResult: String?
 
 class CalculatorViewController: UIViewController {
     
-    private var viewModel: SalaryViewModel
+    var viewModel: SalaryViewModel!
     
     @IBOutlet private weak var salaryInputTextField: UITextField!
     @IBOutlet private weak var takeHomeSalaryLabel: UILabel!
     @IBOutlet private weak var additionalPensionOption: UISegmentedControl!
     
-    init(viewModel: SalaryViewModel) {
-        self.viewModel = viewModel
-        super.init(nibName: nil, bundle: nil)
-    }
-    
-    required init?(coder: NSCoder) {
-        fatalError("init(coder:) has not been implemented")
-    }
+//    init(viewModel: SalaryViewModel) {
+//        self.viewModel = viewModel
+//        super.init(nibName: nil, bundle: nil)
+//    }
+//
+//    required init?(coder: NSCoder) {
+//        fatalError("init(coder:) has not been implemented")
+//    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
