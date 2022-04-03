@@ -9,7 +9,7 @@ import Foundation
 
 struct AdditionalPensionOption {
     let title: String
-    let value: Double
+    let rate: Double
 }
 
 struct TaxInfo {
