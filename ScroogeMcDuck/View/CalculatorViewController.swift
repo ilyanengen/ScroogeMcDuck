@@ -25,11 +25,11 @@ class CalculatorViewController: UIViewController {
         salaryInputTextField.keyboardType = .numberPad
         salaryInputTextField.delegate = self
         
-        additionalPensionOption.removeAllSegments()
-        additionalPensionOption.insertSegment(withTitle: "No", at: 0, animated: true)
-        additionalPensionOption.insertSegment(withTitle: "2.1 %", at: 1, animated: true)
-        additionalPensionOption.insertSegment(withTitle: "3 %", at: 2, animated: true)
-        additionalPensionOption.selectedSegmentIndex = 0
+//        additionalPensionOption.removeAllSegments()
+//        additionalPensionOption.insertSegment(withTitle: "No", at: 0, animated: true)
+//        additionalPensionOption.insertSegment(withTitle: "2.1 %", at: 1, animated: true)
+//        additionalPensionOption.insertSegment(withTitle: "3 %", at: 2, animated: true)
+//        additionalPensionOption.selectedSegmentIndex = 0
         
         takeHomeSalaryLabel.textAlignment = .center
         takeHomeSalaryLabel.textColor = .systemGreen
@@ -53,39 +53,29 @@ class CalculatorViewController: UIViewController {
         guard let grossSalary = Double(textField.text ?? "") else {
             return
         }
-//        updateTakeHomeSalaryLabel(textNumber)
-        viewModel.grossSalaryDidChange(grossSalary)
+        viewModel.update(grossSalary: grossSalary, additionalPensionIndex: additionalPensionOption.selectedSegmentIndex)
     }
     
     @objc
     private func additionalPensionSelected(sender: UISegmentedControl) {
-        guard let textNumber = Double(salaryInputTextField.text ?? "0") else {
+        guard let grossSalary = Double(salaryInputTextField.text ?? "") else {
             return
         }
-//        updateTakeHomeSalaryLabel(textNumber)
-    }
-
-    private func updateTakeHomeSalaryLabel(_ number: Double) {
-        var rate: Double = 0
-        if additionalPensionOption.selectedSegmentIndex == 1 {
-            rate = 0.021
-        } else if additionalPensionOption.selectedSegmentIndex == 2 {
-            rate = 0.03
-        }
-        
-        let pensionRate = 0.1252 + rate
-        takeHomeSalaryLabel.text = String((number - (number * 0.2) - (number * 0.0698) - (number * pensionRate)).rounded())
-        salaryResult = takeHomeSalaryLabel.text
-        SodraAPIImpl().sendTaxInfoToSodra()
+        viewModel.update(grossSalary: grossSalary, additionalPensionIndex: sender.selectedSegmentIndex)
     }
     
     private func setInitialState() {
-        viewModel
+        // Configure segmented control
+        additionalPensionOption.removeAllSegments()
+        for (index, item) in viewModel.taxInfo.additionalPensionOptions.enumerated() {
+            additionalPensionOption.insertSegment(withTitle: item.title, at: index, animated: true)
+        }
+        additionalPensionOption.selectedSegmentIndex = 0
     }
     
     private func updateView() {
-        viewModel.updateView = { [weak self] rate in
-            
+        viewModel.updateView = { [weak self] salary in
+            self?.takeHomeSalaryLabel.text = String(salary)
         }
     }
 }

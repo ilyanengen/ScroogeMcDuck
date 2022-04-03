@@ -13,16 +13,15 @@ protocol SalaryViewModel {
     var salaryCalculator: SalaryCalculator { get }
     var updateView: ((Salary) -> Void)? { get set }
     
+    func update(grossSalary: Salary, additionalPensionIndex: Int)
     func sendResultToSodra(_ salary: Salary)
 }
 
-final class SalaryViewModelImple: SalaryViewModel {
+final class SalaryViewModelImpl: SalaryViewModel {
     var taxInfo: TaxInfo
     var sodraApi: SodraAPI
     var salaryCalculator: SalaryCalculator
     var updateView: ((Salary) -> Void)?
-    
-    private var additionalPensionIndex: Int?
     
     init(taxInfo: TaxInfo, sodraApi: SodraAPI, salaryCalculator: SalaryCalculator) {
         self.taxInfo = taxInfo
@@ -30,19 +29,12 @@ final class SalaryViewModelImple: SalaryViewModel {
         self.salaryCalculator = salaryCalculator
     }
     
-    func additionalPensionSelected(at index: Int) {
-        additionalPensionIndex = index
-    }
-    
-    func grossSalaryDidChange(_ salary: Salary) {
-        guard
-            let index = additionalPensionIndex,
-            let additionalPensionRate = taxInfo.additionalPensionOptions.element(at: index)
-        else {
+    func update(grossSalary: Salary, additionalPensionIndex: Int) {
+        guard let additionalPensionRate = taxInfo.additionalPensionOptions.element(at: additionalPensionIndex) else {
             return
         }
         let netSalary = salaryCalculator.calculateSalary(
-            salaryGross: salary,
+            grossSalary: grossSalary,
             additionalPensionOption: additionalPensionRate
         )
         updateView?(netSalary)

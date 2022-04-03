@@ -10,15 +10,15 @@ import Foundation
 typealias Salary = Double
 
 protocol SalaryCalculator {
-    func calculateSalary(salaryGross: Salary, additionalPensionOption: AdditionalPensionOption) -> Salary
+    func calculateSalary(grossSalary: Salary, additionalPensionOption: AdditionalPensionOption) -> Salary
 }
 
 final class SalaryCalculatorImpl: SalaryCalculator {
-    func calculateSalary(salaryGross: Salary, additionalPensionOption: AdditionalPensionOption) -> Salary {
+    func calculateSalary(grossSalary: Salary, additionalPensionOption: AdditionalPensionOption) -> Salary {
         let pensionRate = Constants.TaxRate.socialSecurity + additionalPensionOption.rate
-        return ((salaryGross -
-                 (salaryGross * Constants.TaxRate.incomeTax) -
-                 (salaryGross * Constants.TaxRate.healthInsurance) -
-                 (salaryGross * pensionRate)).rounded())
+        return ((grossSalary -
+                 (grossSalary * Constants.TaxRate.incomeTax) -
+                 (grossSalary * Constants.TaxRate.healthInsurance) -
+                 (grossSalary * pensionRate)).rounded())
     }
 }
