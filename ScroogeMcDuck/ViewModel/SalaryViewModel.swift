@@ -14,7 +14,6 @@ protocol SalaryViewModel {
     var updateView: ((Salary) -> Void)? { get set }
     
     func update(grossSalary: Salary, additionalPensionIndex: Int)
-    func sendResultToSodra(_ salary: Salary)
 }
 
 final class SalaryViewModelImpl: SalaryViewModel {
@@ -41,7 +40,7 @@ final class SalaryViewModelImpl: SalaryViewModel {
         sendResultToSodra(netSalary)
     }
     
-    func sendResultToSodra(_ salary: Salary) {
+    private func sendResultToSodra(_ salary: Salary) {
         sodraApi.sendSalaryResult(salary)
     }
 }

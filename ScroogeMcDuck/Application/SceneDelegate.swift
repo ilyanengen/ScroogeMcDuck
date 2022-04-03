@@ -6,7 +6,7 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
     
     func scene(_ scene: UIScene, willConnectTo session: UISceneSession, options connectionOptions: UIScene.ConnectionOptions) {
         guard let windowScene = (scene as? UIWindowScene) else { return }
-        let window = UIWindow(windowScene: windowScene)
+        
         let storyboard = UIStoryboard(name: "Main", bundle: nil)
         let calculatorVC = storyboard.instantiateViewController(withIdentifier: "CalculatorViewController") as! CalculatorViewController
         
@@ -22,8 +22,8 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         )
         calculatorVC.viewModel = viewModel
         
-        window.rootViewController = calculatorVC
-        self.window = window
-        window.makeKeyAndVisible()
+        window = UIWindow(windowScene: windowScene)
+        window?.rootViewController = calculatorVC
+        window?.makeKeyAndVisible()
     }
 }
