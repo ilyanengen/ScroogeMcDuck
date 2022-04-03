@@ -8,11 +8,11 @@
 import Foundation
 
 protocol SodraAPI {
-    func sendTaxInfoToSodra()
+    func sendSalaryResult(_ salary: Salary)
 }
 
 final class SodraAPIImpl: SodraAPI {
-    func sendTaxInfoToSodra() -> Void {
-        print("Sending to Sodra... \(salaryResult!)")
+    func sendSalaryResult(_ salary: Salary) {
+        print("Sending to Sodra... \(salary)")
     }
 }

@@ -8,29 +8,48 @@
 import Foundation
 
 protocol SalaryViewModel {
-    var additionalPensionOptions: [AdditionalPensionOption] { get }
+    var taxInfo: TaxInfo { get }
     var sodraApi: SodraAPI { get }
     var salaryCalculator: SalaryCalculator { get }
+    var updateView: ((Salary) -> Void)? { get set }
     
-    var updateView: ((AdditionalPensionOption) -> Void)? { get set }
-    
-    func uploadData()
+    func sendResultToSodra(_ salary: Salary)
 }
 
 final class SalaryViewModelImple: SalaryViewModel {
-    var additionalPensionOptions: [AdditionalPensionOption]
+    var taxInfo: TaxInfo
     var sodraApi: SodraAPI
     var salaryCalculator: SalaryCalculator
+    var updateView: ((Salary) -> Void)?
     
-    var updateView: ((AdditionalPensionOption) -> Void)?
+    private var additionalPensionIndex: Int?
     
-    init(additionalPensionOptions: [AdditionalPensionOption], sodraApi: SodraAPI, salaryCalculator: SalaryCalculator) {
-        self.additionalPensionOptions = additionalPensionOptions
+    init(taxInfo: TaxInfo, sodraApi: SodraAPI, salaryCalculator: SalaryCalculator) {
+        self.taxInfo = taxInfo
         self.sodraApi = sodraApi
         self.salaryCalculator = salaryCalculator
     }
     
-    func uploadData() {
-        
+    func additionalPensionSelected(at index: Int) {
+        additionalPensionIndex = index
+    }
+    
+    func grossSalaryDidChange(_ salary: Salary) {
+        guard
+            let index = additionalPensionIndex,
+            let additionalPensionRate = taxInfo.additionalPensionOptions.element(at: index)
+        else {
+            return
+        }
+        let netSalary = salaryCalculator.calculateSalary(
+            salaryGross: salary,
+            additionalPensionOption: additionalPensionRate
+        )
+        updateView?(netSalary)
+        sendResultToSodra(netSalary)
+    }
+    
+    func sendResultToSodra(_ salary: Salary) {
+        sodraApi.sendSalaryResult(salary)
     }
 }
