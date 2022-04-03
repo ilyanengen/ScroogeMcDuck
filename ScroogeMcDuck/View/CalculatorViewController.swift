@@ -1,7 +1,5 @@
 import UIKit
 
-var salaryResult: String?
-
 class CalculatorViewController: UIViewController {
     
     var viewModel: SalaryViewModel!
@@ -50,18 +48,12 @@ class CalculatorViewController: UIViewController {
 
     @objc
     private func salaryInputTextFieldDidChange(textField: UITextField) {
-        guard let grossSalary = Double(textField.text ?? "") else {
-            return
-        }
-        viewModel.update(grossSalary: grossSalary, additionalPensionIndex: additionalPensionOption.selectedSegmentIndex)
+        updateViewModel()
     }
     
     @objc
     private func additionalPensionSelected(sender: UISegmentedControl) {
-        guard let grossSalary = Double(salaryInputTextField.text ?? "") else {
-            return
-        }
-        viewModel.update(grossSalary: grossSalary, additionalPensionIndex: sender.selectedSegmentIndex)
+        updateViewModel()
     }
     
     private func setInitialState() {
@@ -77,6 +69,13 @@ class CalculatorViewController: UIViewController {
         viewModel.updateView = { [weak self] salary in
             self?.takeHomeSalaryLabel.text = String(salary)
         }
+    }
+    
+    private func updateViewModel() {
+        guard let grossSalary = Double(salaryInputTextField.text ?? "") else {
+            return
+        }
+        viewModel.update(grossSalary: grossSalary, additionalPensionIndex: additionalPensionOption.selectedSegmentIndex)
     }
 }
 
