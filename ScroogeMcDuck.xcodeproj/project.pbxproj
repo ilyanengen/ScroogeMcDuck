@@ -8,6 +8,9 @@
 
 /* Begin PBXBuildFile section */
 		09826B0E27F9E1430065D67E /* SodraAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09826B0D27F9E1430065D67E /* SodraAPI.swift */; };
+		09826B1027F9E3320065D67E /* TaxInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09826B0F27F9E3320065D67E /* TaxInfo.swift */; };
+		09826B1427F9EBFC0065D67E /* SalaryCalculator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09826B1327F9EBFC0065D67E /* SalaryCalculator.swift */; };
+		09826B1727F9EE740065D67E /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09826B1627F9EE740065D67E /* Constants.swift */; };
 		426EA5AD2542F059003FFFE0 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 426EA5AC2542F059003FFFE0 /* AppDelegate.swift */; };
 		426EA5AF2542F059003FFFE0 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 426EA5AE2542F059003FFFE0 /* SceneDelegate.swift */; };
 		426EA5B12542F059003FFFE0 /* CalculatorViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 426EA5B02542F059003FFFE0 /* CalculatorViewController.swift */; };
@@ -37,6 +40,9 @@
 
 /* Begin PBXFileReference section */
 		09826B0D27F9E1430065D67E /* SodraAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SodraAPI.swift; sourceTree = "<group>"; };
+		09826B0F27F9E3320065D67E /* TaxInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaxInfo.swift; sourceTree = "<group>"; };
+		09826B1327F9EBFC0065D67E /* SalaryCalculator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SalaryCalculator.swift; sourceTree = "<group>"; };
+		09826B1627F9EE740065D67E /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		426EA5A92542F058003FFFE0 /* ScroogeMcDuck.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ScroogeMcDuck.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		426EA5AC2542F059003FFFE0 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		426EA5AE2542F059003FFFE0 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -105,6 +111,7 @@
 		09826B0A27F9CA0E0065D67E /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				09826B0F27F9E3320065D67E /* TaxInfo.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -124,8 +131,17 @@
 			isa = PBXGroup;
 			children = (
 				09826B0D27F9E1430065D67E /* SodraAPI.swift */,
+				09826B1327F9EBFC0065D67E /* SalaryCalculator.swift */,
 			);
 			path = Services;
+			sourceTree = "<group>";
+		};
+		09826B1527F9EE500065D67E /* Utils */ = {
+			isa = PBXGroup;
+			children = (
+				09826B1627F9EE740065D67E /* Constants.swift */,
+			);
+			path = Utils;
 			sourceTree = "<group>";
 		};
 		426EA5A02542F058003FFFE0 = {
@@ -157,6 +173,7 @@
 				09826B0927F9CA010065D67E /* ViewModel */,
 				09826B0C27F9E10B0065D67E /* Services */,
 				09826B0B27F9CA310065D67E /* Resources */,
+				09826B1527F9EE500065D67E /* Utils */,
 			);
 			path = ScroogeMcDuck;
 			sourceTree = "<group>";
@@ -312,7 +329,10 @@
 				09826B0E27F9E1430065D67E /* SodraAPI.swift in Sources */,
 				426EA5B12542F059003FFFE0 /* CalculatorViewController.swift in Sources */,
 				426EA5AD2542F059003FFFE0 /* AppDelegate.swift in Sources */,
+				09826B1027F9E3320065D67E /* TaxInfo.swift in Sources */,
+				09826B1727F9EE740065D67E /* Constants.swift in Sources */,
 				426EA5AF2542F059003FFFE0 /* SceneDelegate.swift in Sources */,
+				09826B1427F9EBFC0065D67E /* SalaryCalculator.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
