@@ -27,15 +27,14 @@ class SalaryViewController: UIViewController {
         subscribeOnViewModelUpdates()
     }
     
+    override func viewWillLayoutSubviews() {
+        super.viewWillLayoutSubviews()
+        salaryView.frame = view.bounds
+    }
+    
     private func addSalaryView() {
         salaryView = SalaryView(pensionOptionTitles: viewModel.pensionOptionTitles)
         view.addSubview(salaryView)
-        NSLayoutConstraint.activate([
-            salaryView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: 44),
-            salaryView.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor, constant: 20),
-            salaryView.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor, constant: -20),
-            salaryView.heightAnchor.constraint(equalToConstant: 400)
-        ])
         salaryView.delegate = self
     }
     
