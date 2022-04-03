@@ -88,6 +88,10 @@ class SalaryView: UIView {
         fatalError("init(coder:) has not been implemented")
     }
     
+    func update(netSalaryString: String) {
+        takeHomeSalaryLabel.text = netSalaryString
+    }
+    
     private func addSubviews() {
         addSubview(mainStackView)
         mainStackView.addArrangedSubview(grossSalaryTextField)

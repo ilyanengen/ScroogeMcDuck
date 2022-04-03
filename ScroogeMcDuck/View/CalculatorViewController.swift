@@ -50,7 +50,7 @@ class CalculatorViewController: UIViewController {
 //    private func salaryInputTextFieldDidChange(textField: UITextField) {
 //        updateViewModel()
 //    }
-//    
+//
 //    @objc
 //    private func additionalPensionSelected(sender: UISegmentedControl) {
 //        updateViewModel()
@@ -58,11 +58,11 @@ class CalculatorViewController: UIViewController {
     
     private func setInitialState() {
         // Configure segmented control
-        additionalPensionOption.removeAllSegments()
-        for (index, item) in viewModel.taxInfo.additionalPensionOptions.enumerated() {
-            additionalPensionOption.insertSegment(withTitle: item.title, at: index, animated: true)
-        }
-        additionalPensionOption.selectedSegmentIndex = 0
+//        additionalPensionOption.removeAllSegments()
+//        for (index, item) in viewModel.taxInfo.additionalPensionOptions.enumerated() {
+//            additionalPensionOption.insertSegment(withTitle: item.title, at: index, animated: true)
+//        }
+//        additionalPensionOption.selectedSegmentIndex = 0
     }
     
     private func updateView() {
