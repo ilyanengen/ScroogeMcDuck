@@ -141,11 +141,11 @@
 		426EA5AB2542F059003FFFE0 /* ScroogeMcDuck */ = {
 			isa = PBXGroup;
 			children = (
+				09826B0727F9C9EF0065D67E /* Application */,
 				09826B0B27F9CA310065D67E /* Resources */,
 				09826B0A27F9CA0E0065D67E /* Models */,
-				09826B0927F9CA010065D67E /* ViewModels */,
 				09826B0827F9C9F80065D67E /* Views */,
-				09826B0727F9C9EF0065D67E /* Application */,
+				09826B0927F9CA010065D67E /* ViewModels */,
 			);
 			path = ScroogeMcDuck;
 			sourceTree = "<group>";
