@@ -13,6 +13,7 @@
 		09826B1727F9EE740065D67E /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09826B1627F9EE740065D67E /* Constants.swift */; };
 		09826B1927F9F1060065D67E /* SalaryViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09826B1827F9F1060065D67E /* SalaryViewModel.swift */; };
 		09826B1B27F9FE0F0065D67E /* Array+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09826B1A27F9FE0F0065D67E /* Array+Extension.swift */; };
+		09826B1D27FA170B0065D67E /* SalaryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09826B1C27FA170B0065D67E /* SalaryView.swift */; };
 		426EA5AD2542F059003FFFE0 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 426EA5AC2542F059003FFFE0 /* AppDelegate.swift */; };
 		426EA5AF2542F059003FFFE0 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 426EA5AE2542F059003FFFE0 /* SceneDelegate.swift */; };
 		426EA5B12542F059003FFFE0 /* CalculatorViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 426EA5B02542F059003FFFE0 /* CalculatorViewController.swift */; };
@@ -47,6 +48,7 @@
 		09826B1627F9EE740065D67E /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		09826B1827F9F1060065D67E /* SalaryViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SalaryViewModel.swift; sourceTree = "<group>"; };
 		09826B1A27F9FE0F0065D67E /* Array+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Array+Extension.swift"; sourceTree = "<group>"; };
+		09826B1C27FA170B0065D67E /* SalaryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SalaryView.swift; sourceTree = "<group>"; };
 		426EA5A92542F058003FFFE0 /* ScroogeMcDuck.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ScroogeMcDuck.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		426EA5AC2542F059003FFFE0 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		426EA5AE2542F059003FFFE0 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -101,6 +103,7 @@
 			isa = PBXGroup;
 			children = (
 				426EA5B02542F059003FFFE0 /* CalculatorViewController.swift */,
+				09826B1C27FA170B0065D67E /* SalaryView.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -332,6 +335,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				09826B1D27FA170B0065D67E /* SalaryView.swift in Sources */,
 				09826B1927F9F1060065D67E /* SalaryViewModel.swift in Sources */,
 				09826B0E27F9E1430065D67E /* SodraAPI.swift in Sources */,
 				426EA5B12542F059003FFFE0 /* CalculatorViewController.swift in Sources */,
