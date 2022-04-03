@@ -68,6 +68,7 @@ class SalaryView: UIView {
     
     init(pensionOptionTitles: [String]) {
         super.init(frame: .zero)
+        backgroundColor = .white
         addSubviews()
         makeConstraints()
         configureSegmentedControl(pensionOptionTitles: pensionOptionTitles)
@@ -106,7 +107,7 @@ class SalaryView: UIView {
         mainStackView.topAnchor.constraint(equalTo: safeAreaLayoutGuide.topAnchor, constant: 44).isActive = true
         mainStackView.heightAnchor.constraint(equalToConstant: 400).isActive = true
         mainStackView.leadingAnchor.constraint(equalTo: safeAreaLayoutGuide.leadingAnchor, constant: 20).isActive = true
-        mainStackView.trailingAnchor.constraint(equalTo: safeAreaLayoutGuide.trailingAnchor, constant: 20).isActive = true
+        mainStackView.trailingAnchor.constraint(equalTo: safeAreaLayoutGuide.trailingAnchor, constant: -20).isActive = true
         
         grossSalaryTextField.translatesAutoresizingMaskIntoConstraints = false
         grossSalaryTextField.heightAnchor.constraint(equalToConstant: 44).isActive = true
@@ -122,6 +123,7 @@ class SalaryView: UIView {
         for (index, item) in pensionOptionTitles.enumerated() {
             segmentedControl.insertSegment(withTitle: item, at: index, animated: true)
         }
+        segmentedControl.selectedSegmentIndex = 0
     }
     
     @objc
