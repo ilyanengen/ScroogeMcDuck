@@ -4,11 +4,10 @@ var salaryResult: String?
 
 class CalculatorViewController: UIViewController {
     
-    @IBOutlet weak var salaryInputTextField: UITextField!
-    @IBOutlet weak var takeHomeSalaryLabel: UILabel!
-    @IBOutlet weak var additionalPensionOption: UISegmentedControl!
+    @IBOutlet private weak var salaryInputTextField: UITextField!
+    @IBOutlet private weak var takeHomeSalaryLabel: UILabel!
+    @IBOutlet private weak var additionalPensionOption: UISegmentedControl!
     
-
     override func viewDidLoad() {
         super.viewDidLoad()
         salaryInputTextField.placeholder = "Enter salary on paper"
@@ -36,7 +35,7 @@ class CalculatorViewController: UIViewController {
     }
 
     @objc
-    func salaryInputTextFieldDidChange(textField: UITextField) {
+    private func salaryInputTextFieldDidChange(textField: UITextField) {
         guard let textNumber = Double(textField.text ?? "") else {
             return
         }
@@ -44,14 +43,14 @@ class CalculatorViewController: UIViewController {
     }
     
     @objc
-    func additionalPensionSelected(sender: UISegmentedControl) {
+    private func additionalPensionSelected(sender: UISegmentedControl) {
         guard let textNumber = Double(salaryInputTextField.text ?? "0") else {
             return
         }
         updateTakeHomeSalaryLabel(textNumber)
     }
 
-    func updateTakeHomeSalaryLabel(_ number: Double) {
+    private func updateTakeHomeSalaryLabel(_ number: Double) {
         var rate: Double = 0
         if additionalPensionOption.selectedSegmentIndex == 1 {
             rate = 0.021
@@ -59,11 +58,10 @@ class CalculatorViewController: UIViewController {
             rate = 0.03
         }
         
-        
         let pensionRate = 0.1252 + rate
         takeHomeSalaryLabel.text = String((number - (number * 0.2) - (number * 0.0698) - (number * pensionRate)).rounded())
         salaryResult = takeHomeSalaryLabel.text
-        SodraAPI().sendTaxInfoToSodra()
+        SodraAPIImpl().sendTaxInfoToSodra()
     }
 }
 
@@ -73,10 +71,3 @@ extension CalculatorViewController: UITextFieldDelegate {
         return true
     }
 }
-
-struct SodraAPI {
-    func sendTaxInfoToSodra() -> Void {
-        print("Sending to Sodra... \(salaryResult!)")
-    }
-}
-

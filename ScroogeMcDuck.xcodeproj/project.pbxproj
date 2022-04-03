@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		09826B0E27F9E1430065D67E /* SodraAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09826B0D27F9E1430065D67E /* SodraAPI.swift */; };
 		426EA5AD2542F059003FFFE0 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 426EA5AC2542F059003FFFE0 /* AppDelegate.swift */; };
 		426EA5AF2542F059003FFFE0 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 426EA5AE2542F059003FFFE0 /* SceneDelegate.swift */; };
 		426EA5B12542F059003FFFE0 /* CalculatorViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 426EA5B02542F059003FFFE0 /* CalculatorViewController.swift */; };
@@ -35,6 +36,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		09826B0D27F9E1430065D67E /* SodraAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SodraAPI.swift; sourceTree = "<group>"; };
 		426EA5A92542F058003FFFE0 /* ScroogeMcDuck.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ScroogeMcDuck.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		426EA5AC2542F059003FFFE0 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		426EA5AE2542F059003FFFE0 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -81,41 +83,49 @@
 			children = (
 				426EA5AC2542F059003FFFE0 /* AppDelegate.swift */,
 				426EA5AE2542F059003FFFE0 /* SceneDelegate.swift */,
-				426EA5BA2542F060003FFFE0 /* Info.plist */,
 			);
 			path = Application;
 			sourceTree = "<group>";
 		};
-		09826B0827F9C9F80065D67E /* Views */ = {
+		09826B0827F9C9F80065D67E /* View */ = {
 			isa = PBXGroup;
 			children = (
 				426EA5B02542F059003FFFE0 /* CalculatorViewController.swift */,
 			);
-			path = Views;
+			path = View;
 			sourceTree = "<group>";
 		};
-		09826B0927F9CA010065D67E /* ViewModels */ = {
+		09826B0927F9CA010065D67E /* ViewModel */ = {
 			isa = PBXGroup;
 			children = (
 			);
-			path = ViewModels;
+			path = ViewModel;
 			sourceTree = "<group>";
 		};
-		09826B0A27F9CA0E0065D67E /* Models */ = {
+		09826B0A27F9CA0E0065D67E /* Model */ = {
 			isa = PBXGroup;
 			children = (
 			);
-			path = Models;
+			path = Model;
 			sourceTree = "<group>";
 		};
 		09826B0B27F9CA310065D67E /* Resources */ = {
 			isa = PBXGroup;
 			children = (
 				426EA5B22542F059003FFFE0 /* Main.storyboard */,
-				426EA5B52542F060003FFFE0 /* Assets.xcassets */,
 				426EA5B72542F060003FFFE0 /* LaunchScreen.storyboard */,
+				426EA5B52542F060003FFFE0 /* Assets.xcassets */,
+				426EA5BA2542F060003FFFE0 /* Info.plist */,
 			);
 			path = Resources;
+			sourceTree = "<group>";
+		};
+		09826B0C27F9E10B0065D67E /* Services */ = {
+			isa = PBXGroup;
+			children = (
+				09826B0D27F9E1430065D67E /* SodraAPI.swift */,
+			);
+			path = Services;
 			sourceTree = "<group>";
 		};
 		426EA5A02542F058003FFFE0 = {
@@ -142,10 +152,11 @@
 			isa = PBXGroup;
 			children = (
 				09826B0727F9C9EF0065D67E /* Application */,
+				09826B0A27F9CA0E0065D67E /* Model */,
+				09826B0827F9C9F80065D67E /* View */,
+				09826B0927F9CA010065D67E /* ViewModel */,
+				09826B0C27F9E10B0065D67E /* Services */,
 				09826B0B27F9CA310065D67E /* Resources */,
-				09826B0A27F9CA0E0065D67E /* Models */,
-				09826B0827F9C9F80065D67E /* Views */,
-				09826B0927F9CA010065D67E /* ViewModels */,
 			);
 			path = ScroogeMcDuck;
 			sourceTree = "<group>";
@@ -298,6 +309,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				09826B0E27F9E1430065D67E /* SodraAPI.swift in Sources */,
 				426EA5B12542F059003FFFE0 /* CalculatorViewController.swift in Sources */,
 				426EA5AD2542F059003FFFE0 /* AppDelegate.swift in Sources */,
 				426EA5AF2542F059003FFFE0 /* SceneDelegate.swift in Sources */,
@@ -477,7 +489,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
-				INFOPLIST_FILE = ScroogeMcDuck/Application/Info.plist;
+				INFOPLIST_FILE = ScroogeMcDuck/Resources/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -495,7 +507,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
-				INFOPLIST_FILE = ScroogeMcDuck/Application/Info.plist;
+				INFOPLIST_FILE = ScroogeMcDuck/Resources/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
