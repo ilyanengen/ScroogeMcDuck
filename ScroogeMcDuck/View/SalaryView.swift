@@ -17,8 +17,6 @@ class SalaryView: UIView {
     
     private let mainStackView: UIStackView = {
         let stackView = UIStackView()
-        stackView.alignment = .fill
-        stackView.distribution = .fill
         stackView.spacing = 20
         stackView.axis = .vertical
         return stackView
@@ -35,9 +33,6 @@ class SalaryView: UIView {
     
     private let additionalPensionOptionsStackView: UIStackView = {
         let stackView = UIStackView()
-        stackView.alignment = .fill
-        stackView.distribution = .fill
-        stackView.spacing = 0
         stackView.axis = .vertical
         return stackView
     }()
@@ -45,7 +40,6 @@ class SalaryView: UIView {
     private let additionalPensionOptionsLabel: UILabel = {
         let label = UILabel()
         label.text = "Additional pension payments?"
-        label.numberOfLines = 1
         label.contentMode = .left
         return label
     }()
@@ -62,7 +56,6 @@ class SalaryView: UIView {
         label.contentMode = .left
         label.textColor = .systemGreen
         label.font = UIFont.systemFont(ofSize: 60)
-        label.text = ""
         return label
     }()
     
@@ -72,7 +65,6 @@ class SalaryView: UIView {
         addSubviews()
         makeConstraints()
         configureSegmentedControl(pensionOptionTitles: pensionOptionTitles)
-        grossSalaryTextField.delegate = self
         grossSalaryTextField.addTarget(
             self,
             action: #selector(valuesChanged),
@@ -104,19 +96,19 @@ class SalaryView: UIView {
     
     private func makeConstraints() {
         mainStackView.translatesAutoresizingMaskIntoConstraints = false
-        mainStackView.topAnchor.constraint(equalTo: safeAreaLayoutGuide.topAnchor, constant: 44).isActive = true
-        mainStackView.heightAnchor.constraint(equalToConstant: 400).isActive = true
-        mainStackView.leadingAnchor.constraint(equalTo: safeAreaLayoutGuide.leadingAnchor, constant: 20).isActive = true
-        mainStackView.trailingAnchor.constraint(equalTo: safeAreaLayoutGuide.trailingAnchor, constant: -20).isActive = true
-        
         grossSalaryTextField.translatesAutoresizingMaskIntoConstraints = false
-        grossSalaryTextField.heightAnchor.constraint(equalToConstant: 44).isActive = true
-        
         additionalPensionOptionsLabel.translatesAutoresizingMaskIntoConstraints = false
-        additionalPensionOptionsLabel.heightAnchor.constraint(equalToConstant: 20).isActive = true
-        
         segmentedControl.translatesAutoresizingMaskIntoConstraints = false
-        segmentedControl.heightAnchor.constraint(equalToConstant: 44).isActive = true
+        
+        NSLayoutConstraint.activate([
+            mainStackView.topAnchor.constraint(equalTo: safeAreaLayoutGuide.topAnchor, constant: 44),
+            mainStackView.heightAnchor.constraint(equalToConstant: 400),
+            mainStackView.leadingAnchor.constraint(equalTo: safeAreaLayoutGuide.leadingAnchor, constant: 20),
+            mainStackView.trailingAnchor.constraint(equalTo: safeAreaLayoutGuide.trailingAnchor, constant: -20),
+            grossSalaryTextField.heightAnchor.constraint(equalToConstant: 44),
+            additionalPensionOptionsLabel.heightAnchor.constraint(equalToConstant: 20),
+            segmentedControl.heightAnchor.constraint(equalToConstant: 44)
+        ])
     }
 
     private func configureSegmentedControl(pensionOptionTitles: [String]) {
@@ -133,12 +125,5 @@ class SalaryView: UIView {
             grossSalaryText: grossSalaryTextField.text,
             selectedPensionOptionIndex: segmentedControl.selectedSegmentIndex
         )
-    }
-}
-
-extension SalaryView: UITextFieldDelegate {
-    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
-        textField.resignFirstResponder()
-        return true
     }
 }

@@ -7,6 +7,7 @@
 
 import Foundation
 
+// If we can change behavior, use Decimal instead of Double for better rounding.
 typealias Salary = Double
 
 protocol SalaryCalculator {

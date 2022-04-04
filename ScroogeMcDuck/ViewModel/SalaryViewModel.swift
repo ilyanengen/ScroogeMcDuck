@@ -8,9 +8,6 @@
 import Foundation
 
 protocol SalaryViewModel {
-    var taxInfo: TaxInfo { get }
-    var sodraApi: SodraAPI { get }
-    var salaryCalculator: SalaryCalculator { get }
     var pensionOptionTitles: [String] { get }
     var updateView: ((Salary) -> Void)? { get set }
     
@@ -18,9 +15,10 @@ protocol SalaryViewModel {
 }
 
 final class SalaryViewModelImpl: SalaryViewModel {
-    var taxInfo: TaxInfo
-    var sodraApi: SodraAPI
-    var salaryCalculator: SalaryCalculator
+    private let taxInfo: TaxInfo
+    private let sodraApi: SodraAPI
+    private let salaryCalculator: SalaryCalculator
+    
     var pensionOptionTitles: [String] { return taxInfo.additionalPensionOptions.map { $0.title } }
     var updateView: ((Salary) -> Void)?
     
