@@ -35,7 +35,9 @@ class SalaryViewController: UIViewController {
     
     private func subscribeOnViewModelUpdates() {
         viewModel.updateView = { [weak self] salary in
-            self?.salaryView.update(netSalaryString: String(salary))
+            DispatchQueue.main.async {
+                self?.salaryView.update(netSalaryString: String(salary))
+            }
         }
     }
 }
