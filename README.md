@@ -1,0 +1,2 @@
+# ScroogeMcDuck
+Tax calculation app
